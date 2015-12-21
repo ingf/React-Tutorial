@@ -1,12 +1,6 @@
-## React Tutorials(1) ---- 基础
+## React Tutorial(1) ---- 基础
 
 > Front Infrastructure Team
-
-### 系列文章
-
-React Tutorials(2) ---- JSX
-React Tutorials(3) ---- Component
-...
 
 ### 特性
 
