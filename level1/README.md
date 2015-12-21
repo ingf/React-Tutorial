@@ -329,7 +329,7 @@ Poster 稍微复杂一点，我们使用 iScroll 插件实现。
         }
     });
 
-完整的代码在[这里](http://gitlab.intra.wepiao.com/FEI/pepper/blob/tutorials/src/pages/details/index.jsx)。
+完整的代码在[这里](src/pages/details/index.jsx)。
 
 通过这种方式，每个组件的UI和逻辑都定义在组件内部，和外部完全通过 API 来交互，通过组合的方式来实现复杂的功能。React 认为一个组件应该具有如下特征：
 
