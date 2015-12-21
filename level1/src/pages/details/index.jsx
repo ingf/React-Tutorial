@@ -37,7 +37,7 @@ var Poster = React.createClass({
         };
     },
     render: function() {
-        return <div scrollX={true} className="slider">
+        return <div className="slider">
             {
                 this.props.data.map(function(item, index){
                     return <a href='javascript:void(0)' key={index}>
@@ -117,9 +117,7 @@ var Details = React.createClass({
         };
     },
     componentDidMount: function() {
-        console.log('id: ' + this.props.id);
-
-        api.get('cgi/movie/info?movieId=1718')
+        api.get('cgi/movie/info?movieId=' + this.props.id)
             .then(function(resp) {
                 var data = resp.data;
                 this.setState({

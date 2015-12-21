@@ -29,7 +29,7 @@ class App extends React.Component {
             <Locations hash>
                 <Location path="/" handler={Home}/>
                 <Location path="/about" handler={About}/>
-                <Location path="/details" handler={Details}/>
+                <Location path="/details/:id" handler={Details}/>
                 <Location path="/list(/*)" handler={List}/>
                 <NotFound handler={NotFoundPage}/>
             </Locations>

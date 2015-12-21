@@ -269,7 +269,7 @@ React 为每个状态都提供了两种处理函数，will 函数在进入状态
         }
     });
 
-Poster 稍微复杂一点，我们使用 iScroll 插件实现。
+Poster 稍微复杂一点。
 
     var Poster = React.createClass({
         getDefaultProps: function() {
@@ -278,7 +278,7 @@ Poster 稍微复杂一点，我们使用 iScroll 插件实现。
             };
         },
         render: function() {
-            return <div scrollX={true} className={styles.slider}>
+            return <div className="slider">
                 {
                     this.props.data.map(function(item, index){
                         return <a href='javascript:void(0)' key={index}>
@@ -295,7 +295,7 @@ Poster 稍微复杂一点，我们使用 iScroll 插件实现。
     var CommentList = React.createClass({
         render: function() {
             return (
-                <div className={styles['comment-list']}>
+                <div className="comment-list">
                     {this.props.data.map(function(item, i) {
                         return (
                             <div key={i}>
@@ -318,10 +318,10 @@ Poster 稍微复杂一点，我们使用 iScroll 插件实现。
         render: function() {
             return (
                 <div>
-                    <div className={styles['input-box']}>        
+                    <div className="input-box">
                         <textarea ref="commentInput" rows="6" placeholder="简单说几句"></textarea>
                     </div>
-                    <div className={styles['btn-box']}>
+                    <div className="btn-box">
                         <a href="#" onClick={this.onClick}>提 交</a>   
                     </div>
                 </div>
