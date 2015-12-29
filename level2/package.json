@@ -1,0 +1,15 @@
+{
+  "name": "pepper",
+  "version": "0.0.1",
+  "description": "wepiao front end solution",
+  "main": "app.js",
+  "author": "FEI@wepiao.com",
+  "license": "ISC",
+  "dependencies": {
+    "classnames": "^1.2.0",
+    "react": "^0.14.1",
+    "react-dom": "^0.14.1",
+    "react-router-component": "^0.27.2",
+    "reqwest": "^2.0.5"
+  }
+}

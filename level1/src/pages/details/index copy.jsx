@@ -119,7 +119,7 @@ var Details = React.createClass({
     componentDidMount: function() {
         api.get('cgi/movie/info?movieId=' + this.props.id)
             .then(function(resp) {
-                var data = resp;
+                var data = resp.data;
                 this.setState({
                     info: data.info
                 });

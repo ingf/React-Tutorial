@@ -2,6 +2,27 @@
 
 > Front Infrastructure Team
 
+### 为什么是 React
+
+React 来自于 Facebook，是的，就是那个你们听说过但是打不开的网站。
+
+- Web: [https://facebook.github.io/react/](https://facebook.github.io/react/)
+- Native: [https://facebook.github.io/react-native/](https://facebook.github.io/react-native/)
+- TV: [https://github.com/jordanbyron/react-native/tree/tvOS](https://github.com/jordanbyron/react-native/tree/tvOS)
+- Desktop: [https://github.com/ptmt/react-native-desktop](https://github.com/ptmt/react-native-desktop)
+- ...
+
+所以，Facebook 在推出 React Native 的时候，放出的口号是，learn once, write anywhere。
+
+几乎每个大公司都有一个“运行时间长，维护的工程师换了一批又一批”的项目。Amazon 曾经有个工程师描述维护这种项目的感觉：“climb the shit mountain”。
+React 的项目经理 Tom Occhino在 [F8](https://www.youtube.com/watch?v=nYkdrAPrdcw)表示，他们遇到了一些类似的问题
+
+- 如何能让一帮刚从大学毕业的新兵蛋子，就可以上前线 Bug，或者开发新的 Feature
+- 如何保证 Facebook 的各种背景的牛逼闪闪的全栈工程师写出来的前端代码不会随着时间消逝而快速腐烂
+
+这两点其实也是很多软件工程师所关注的，特别是在前端，近几年来，前端发展很快，都不用一年半就完全是另一个模样。
+React 号称能让新人第一天开始使用，就能开发新功能。那么他是怎么做到的呢？
+
 ### 特性
 
 - 用 JSX 语法取代 HTML 模板，在 JavaScript 里声明式地描述 UI
@@ -11,7 +32,7 @@
 
 ### ReactDOM.render()
 
-ReactDOM.render 是 React 的最基本方法，用于将模板转换成 HTML 语言，并插入指定的 DOM 节点。代码可以在 [pepper](http://gitlab.intra.wepiao.com/FEI/pepper/tree/master) 里面执行，也可以使用项目里面的 [index.html](index.html)，这个测试页面也被放到了 [jsfiddle](http://jsfiddle.net/69z2wepo/24153/) 上面，建议新手使用本地的 index.html。
+ReactDOM.render 是 React 的最基本方法，用于将➜转换成 HTML 语言，并插入指定的 DOM 节点。代码可以在 [pepper](http://gitlab.intra.wepiao.com/FEI/pepper/tree/master) 里面执行，也可以使用项目里面的 [index.html](index.html)，这个测试页面也被放到了 [jsfiddle](http://jsfiddle.net/69z2wepo/24153/) 上面，建议新手使用本地的 index.html。
 
     ReactDOM.render(
         <h1>Greeting, world!</h1>,
@@ -25,6 +46,8 @@ ReactDOM.render 是 React 的最基本方法，用于将模板转换成 HTML 语
     </div>
 
 ### JSX 语法
+众所周知，直接操作 DOM 存在不少问题，大家比较熟悉 jQuery，他在上层封装了很多操作，让开发者有了统一的开发体验。在这一点 React 和 jQuery 有点像，但是比 jQuery 高出一个等级，React 是不会让开发者去操作 DOM 的，除非不得不操作 DOM 。它用一种更快的内置仿造的 DOM 来计算差异，为你计算出效率最高的 DOM 改变，然后自动去更新 DOM。
+
 上一节的代码， HTML 语言直接写在 JavaScript 语言之中，不加任何引号，这就是 JSX 的语法，它允许 HTML 与 JavaScript 的混写。
 
     var movies = ['007：幽灵党','饥饿游戏3','我的少女时代'];
@@ -51,6 +74,8 @@ ReactDOM.render 是 React 的最基本方法，用于将模板转换成 HTML 语
     </div>
 
 ### 组件
+
+所谓组件，就是状态机器。React 将用户界面看做简单的状态机器。当组件处于某个状态时，那么就输出这个状态对应的界面。通过这种方式，就很容易去保证界面的一致性。在 React 中，你简单的去更新某个组件的状态，然后输出基于新状态的整个界面。React 负责以最高效的方式去比较两个界面并更新 DOM 树。
 
 React 允许将代码封装成组件（component），然后像插入普通 HTML 标签一样，在网页中插入这个组件。React.createClass 方法就用于生成一个组件类。
 
@@ -110,25 +135,9 @@ React 允许将代码封装成组件（component），然后像插入普通 HTML
 React 里只需把事件处理器（event handler）以骆峰命名（camelCased）形式当作组件的 props 传入即可，就像使用普通 HTML 那样。React 内部创建一套合成事件系统来使所有事件在 IE8 和以上浏览器表现一致。也就是说，React 知道如何冒泡和捕获事件，而且你的事件处理器接收到的 events 参数与 [W3C](http://www.w3.org/TR/DOM-Level-3-Events/) 规范一致，无论你使用哪种浏览器。
 其实，当 React 启动的时候，它在最外层使用唯一一个事件监听器处理所有事件。当组件被加载和卸载时，只是在内部映射里添加或删除事件处理器。当事件触发，React 根据映射来决定如何分发。
 
-上面这种绑定事件的方式是不是很熟悉，因为上世纪90年代就是这么做的：
-
-    <input type="button" value="submit" onclick="alert('你点了我')" />
-
-顺便我们在看一下 jQuery 时代的做法：
-
-    <input type="button" value="submit" id="foo">foo</input>
-
-    $('#foo').click(function(e) {alert('你点了我')});
-
-我们在看看 React 的实现：
-
-    <input type="button" value="submit" onClick={this.handleClick} />
-
-是不是很简单，返璞归真！
-
 ### this.state
 
-React 把用户界面当作简单状态机。把用户界面想像成拥有不同状态然后渲染这些状态，可以轻松让用户界面和数据保持一致。
+React 把用户界面当作简单状态机。把用户界面想像成拥有不同状态然后渲染这些状态，可以轻松让用户界面和状态保持一致。
 React 里，只需调用 setState()来更新组件的 state，然后 React 根据新的 state 重新渲染用户界面（不要操作 DOM）。React 来决定如何最高效地更新 DOM。
 
     var LikeButton = React.createClass({
@@ -343,6 +352,35 @@ React 是一个全新思路的前端 UI 框架，它完全接管了 UI 开发中
 ### 工具
 
 [React Developer Tools](https://github.com/facebook/react-devtools)
+
+### 编写可预测，符合习惯的代码
+
+所谓可预测（predictable），即容易理解的代码。我们上面已经说了很多了，为什么这里还要加一节呢？其实我是想问大家一个问题，大家觉得 React 最大的价值究竟什么？
+
+高性能虚拟 DOM？
+JSX？
+封装过的事件机制？
+调试机制？
+
+尽管这些都足以重要，但是 Tom Occhino 指出 React 最有价值的是声明式的，直观的编程方式。
+
+软件工程想来不提倡高深莫测的技巧、复杂的算法去编程，相反，如何写出可理解可阅读可预测的代码才是质量和效率的关键。
+
+前面这种绑定事件的方式是不是很熟悉，因为上世纪90年代就是这么做的：
+
+    <input type="button" value="submit" onclick="alert('你点了我')" />
+
+顺便我们在看一下 jQuery 时代的做法：
+
+    <input type="button" value="submit" id="foo">foo</input>
+
+    $('#foo').click(function(e) {alert('你点了我')});
+
+我们在看看 React 的实现：
+
+    <input type="button" value="submit" onClick={this.handleClick} />
+
+是不是很简单，返璞归真，任何以为了解过前端的同学都能看懂这段代码，同时也能写出这样的代码！UNIX 的发明者里奇设定了 UNIX 的设计原则为 Keep it simple & stupid（大道至简）。
 
 ### 将来
 

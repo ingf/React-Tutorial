@@ -12,10 +12,42 @@
 <body>
     <div id="app"></div>
     <script type="text/babel">
-        ReactDOM.render(
-            <h1>Greeting, world!</h1>, 
-            document.getElementById('app')
-        );
+
+
+
+var MovieList = React.createClass({
+    getInitialState: function() {
+        return {
+            list: ['007：幽灵党','饥饿游戏3','我的少女时代']
+        };
+    },
+    componentDidMount: function() {
+        setTimeout(function () {
+            this.setState({
+                list: this.state.list.concat(['老炮儿','一切都好'])
+            });
+        }.bind(this), 2000);
+    },
+    render: function() {
+        return (
+            <div>
+            {
+                this.state.list.map(function (item, i) {
+                    return <div key={i}>{item}</div>
+                })
+            }
+            </div>
+        )
+    }
+});
+
+ReactDOM.render(
+    <MovieList></MovieList>,
+    document.getElementById('app')
+);
+
+
+
     </script>
 </body>
 
