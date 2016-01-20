@@ -15,7 +15,10 @@ React 来自于 Facebook，是的，就是那个你们听说过但是打不开�
 所以，Facebook 在推出 React Native 的时候，放出的口号是，learn once, write anywhere。
 
 几乎每个大公司都有一个“运行时间长，维护的工程师换了一批又一批”的项目。Amazon 曾经有个工程师描述维护这种项目的感觉：“climb the shit mountain”。
-React 的项目经理 Tom Occhino在 [F8](https://www.youtube.com/watch?v=nYkdrAPrdcw)表示，他们遇到了一些类似的问题
+React 的项目经理 Tom Occhino在 [F8](https://www.youtube.com/watch?v=nYkdrAPrdcw)表示，他们遇到了一些类似的问题。
+
+#### 菜鸟养成营
+Facebook 很希望工程师在第一天就把所有的编程环境都设置好，在第一天就提交代码。这样可以在周二参与每周例行的代码发布活动，将代码同步到 Facebook 几十万台服务器中。Facebook 并不希望新人在第一天提交复杂的代码，基本都是很简单的改变；希望通过练手让工程师能迅速了解整个流程，迅速进入角色。
 
 - 如何能让一帮刚从大学毕业的新兵蛋子，就可以上前线 Bug，或者开发新的 Feature
 - 如何保证 Facebook 的各种背景的牛逼闪闪的全栈工程师写出来的前端代码不会随着时间消逝而快速腐烂
@@ -26,7 +29,9 @@ React 号称能让新人第一天开始使用，就能开发新功能。那么�
 ### 特性
 
 - 用 JSX 语法取代 HTML 模板，在 JavaScript 里声明式地描述 UI
+Facebook 创造 JSX 语法，取代了我们常用的模板引擎，允许我们可以直接在 js 文件中来使用 JSX，这种语法结合了 HTML 和 JavaScript 的优势，既能像平常一样使用 HTML，同时又能在 HTML 中使用强大的 JavaScript 语言。相当于我们可以把 View 和 JavaScript 逻辑写在同一个文件里面。
 - 虚拟 DOM 取代物理 DOM 作为操作对象，封装了 DOM 的事件系统
+说道 DOM，这中间话题比较多，在很久以前，因为浏览器厂商很多，而他们中间又有一些比较特立独行，所以开发者体验并不是很好，这时候 jQuery 站出来了。他在 DOM 之上做了一层封装，开发者调用 jQuery 的方法就好了。但是 Facebook 认为开发者直接操作 DOM 还不够好，所以他们搞了一个虚拟 DOM，开发者现在连 DOM 都不用操作了，它用一种更快的内置仿造的 DOM 来计算差异，为你计算出效率最高的 DOM 改变，然后自动去更新 DOM。而且还封装了事件系统，React 的高明之处就是这个事件系统对于开发者而言，并没有新的接口或者其他，一看就会，比 jQuery 还简单。
 - 单向数据流动
 - 组件和基于组件的设计流程
 
