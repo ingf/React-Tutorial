@@ -23,7 +23,7 @@ export default class Home extends React.Component {
       link: '/list'
     },{
       text: 'Details',
-      link: '/details'
+      link: '/details/6071'
     }],
     current: 'Home'
   }
