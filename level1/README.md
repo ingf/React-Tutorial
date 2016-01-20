@@ -18,7 +18,7 @@ React 来自于 Facebook，是的，就是那个你们听说过但是打不开�
 React 的项目经理 Tom Occhino在 [F8](https://www.youtube.com/watch?v=nYkdrAPrdcw)表示，他们遇到了一些类似的问题。
 
 #### 菜鸟养成营
-Facebook 很希望工程师在第一天就把所有的编程环境都设置好，在第一天就提交代码。这样可以在周二参与每周例行的代码发布活动，将代码同步到 Facebook 几十万台服务器中。Facebook 并不希望新人在第一天提交复杂的代码，基本都是很简单的改变；希望通过练手让工程师能迅速了解整个流程，迅速进入角色。
+Facebook 很希望工程师在第一天就把所有的编程环境都设置好，在第一天就提交代码。这样可以在周二参与每周例行的代码发布活动，将代码同步到 Facebook 几十万台服务器中。Facebook 并不希望新人在第一天提交复杂的代码，基本都是很简单的改变；希望通过练手让工程师能迅速了解整个流程，迅速进入角色。但是这只是解决了工作流程问题，新人还是需要自己动手写代码的，所以菜鸟养成营还有下面两个问题。
 
 - 如何能让一帮刚从大学毕业的新兵蛋子，就可以上前线 Bug，或者开发新的 Feature
 - 如何保证 Facebook 的各种背景的牛逼闪闪的全栈工程师写出来的前端代码不会随着时间消逝而快速腐烂
@@ -39,7 +39,7 @@ Facebook 创造 JSX 语法，取代了我们常用的模板引擎，允许我们
 
 ### ReactDOM.render()
 
-ReactDOM.render 是 React 的最基本方法，用于将➜转换成 HTML 语言，并插入指定的 DOM 节点。代码可以在 [pepper](http://gitlab.intra.wepiao.com/FEI/pepper/tree/master) 里面执行，也可以使用项目里面的 [index.html](index.html)，这个测试页面也被放到了 [jsfiddle](http://jsfiddle.net/69z2wepo/24153/) 上面，建议新手使用本地的 index.html。
+ReactDOM.render 是 React 的最基本方法，用于将➜转换成 HTML 语言，并插入指定的 DOM 节点。代码可以在 [pepper](https://www.npmjs.com/package/we-pepper) 里面执行，也可以使用项目里面的 [index.html](index.html)，这个测试页面也被放到了 [jsfiddle](http://jsfiddle.net/69z2wepo/24153/) 上面，建议新手使用本地的 index.html。
 
     ReactDOM.render(
         <h1>Greeting, world!</h1>,
@@ -399,4 +399,4 @@ JSX？
 
 至此，React 的基本点都讲完了，但是社区还有大量的知识点需要学习，比如react-router, react-hot-reload, Redux 或者 Flux 的 N 种实现，CSS in JS 及其 N 种实现，Immutable-js，webpack...
 
-虽然有点多，但是每项都可以学出来装逼用，而且目前大家不用担心，因为大部分我们都已经打包到 [pepper](http://gitlab.intra.wepiao.com/FEI/pepper/tree/master) 里面了。在后面的分享里面我们会逐步深入进去，欢迎大家关注这个项目，有任何问题都可以在 gitlab 里面提 issue，然后欢迎所有同学都可以一起来分享在 React 上的一些事情。
+虽然有点多，但是每项都可以学出来装逼用，而且目前大家不用担心，因为大部分我们都已经打包到 [pepper](https://www.npmjs.com/package/we-pepper) 里面了。在后面的分享里面我们会逐步深入进去，欢迎大家关注这个项目，有任何问题都可以在 gitlab 里面提 issue，然后欢迎所有同学都可以一起来分享在 React 上的一些事情。
