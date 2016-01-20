@@ -29,11 +29,13 @@ React 号称能让新人第一天开始使用，就能开发新功能。那么�
 ### 特性
 
 - 用 JSX 语法取代 HTML 模板，在 JavaScript 里声明式地描述 UI
- > Facebook 创造 JSX 语法，取代了我们常用的模板引擎，允许我们可以直接在 js 文件中来使用 JSX，这种语法结合了 HTML 和 JavaScript 的优势，既能像平常一样使用 HTML，同时又能在 HTML 中使用强大的 JavaScript 语言。相当于我们可以把 View 和 JavaScript 逻辑写在同一个文件里面。
 - 虚拟 DOM 取代物理 DOM 作为操作对象，封装了 DOM 的事件系统
- > 说道 DOM，这中间话题比较多，在很久以前，因为浏览器厂商很多，而他们中间又有一些比较特立独行，所以开发者体验并不是很好，这时候 jQuery 站出来了。他在 DOM 之上做了一层封装，开发者调用 jQuery 的方法就好了。但是 Facebook 认为开发者直接操作 DOM 还不够好，所以他们搞了一个虚拟 DOM，开发者现在连 DOM 都不用操作了，它用一种更快的内置仿造的 DOM 来计算差异，为你计算出效率最高的 DOM 改变，然后自动去更新 DOM。而且还封装了事件系统，React 的高明之处就是这个事件系统对于开发者而言，并没有新的接口或者其他，一看就会，比 jQuery 还简单。
 - 单向数据流动
 - 组件和基于组件的设计流程
+
+Facebook 创造 JSX 语法，取代了我们常用的模板引擎，允许我们可以直接在 js 文件中来使用 JSX，这种语法结合了 HTML 和 JavaScript 的优势，既能像平常一样使用 HTML，同时又能在 HTML 中使用强大的 JavaScript 语言。相当于我们可以把 View 和 JavaScript 逻辑写在同一个文件里面。
+
+说道 DOM，这中间话题比较多，在很久以前，因为浏览器厂商很多，而他们中间又有一些比较特立独行，所以开发者体验并不是很好，这时候 jQuery 站出来了。他在 DOM 之上做了一层封装，开发者调用 jQuery 的方法就好了。但是 Facebook 认为开发者直接操作 DOM 还不够好，所以他们搞了一个虚拟 DOM，开发者现在连 DOM 都不用操作了，它用一种更快的内置仿造的 DOM 来计算差异，为你计算出效率最高的 DOM 改变，然后自动去更新 DOM。而且还封装了事件系统，React 的高明之处就是这个事件系统对于开发者而言，并没有新的接口或者其他，一看就会，比 jQuery 还简单。
 
 ### ReactDOM.render()
 
@@ -96,7 +98,7 @@ React 允许将代码封装成组件（component），然后像插入普通 HTML
         document.getElementById('app')
     );
 
-上面代码中，我们把电影详情封装成一个组件 Details，然后就想插入普通 HTML 标签一样，在网页中插入这个组件。所有的组件都必须实现 render 方法，该方法返回一颗 React 组件树，这棵树最终将会渲染成 HTML，render 方法是一个 pure function，只负责纯粹的渲染逻辑，不涉及具体的业务逻辑和其他其他事情，这样可以使服务器端渲染更加切实可行，也使组件更容易被理解。
+上面代码中，我们把电影详情封装成一个组件 Details，然后就想插入普通 HTML 标签一样，在网页中插入这个组件。
 
 组件的用法和 HTML 标签完全一致，可以加入任意属性，比如我们给 Details 组件加入一个 movieId 属性，他的值为 id，这个值可以在组件内从 this.props 对象上面读取，上面的代码运行效果如下：
 
@@ -106,6 +108,8 @@ React 允许将代码封装成组件（component），然后像插入普通 HTML
             <span data-reactid=".0.1">8888</span>
         </div>
     </div>
+
+所有的组件都必须实现 render 方法，我们先回顾一下模板引擎，基本都是返回字符串，然后在数据编进去，替换掉里面的变量，然后在把这段 HTML 片段 append 到 document 中。而 React 的 render 方法不是返回字符串， 是返回 view 的描述，是一颗 React 组件树，这棵树最终将会渲染成 HTML，render 方法是一个 pure function，就是说只负责纯粹的渲染逻辑，不涉及具体的业务逻辑和其他其他事情，这样可以使服务器端渲染更加切实可行，也使组件更容易被理解。
 
 添加组件属性，有一个地方需要注意，就是 class 属性需要写成 className ，for 属性需要写成 htmlFor ，这是因为 class 和 for 是 JavaScript 的保留字。
 
@@ -145,34 +149,38 @@ React 里只需把事件处理器（event handler）以骆峰命名（camelCased
 React 把用户界面当作简单状态机。把用户界面想像成拥有不同状态然后渲染这些状态，可以轻松让用户界面和状态保持一致。
 React 里，只需调用 setState()来更新组件的 state，然后 React 根据新的 state 重新渲染用户界面（不要操作 DOM）。React 来决定如何最高效地更新 DOM。
 
-    var LikeButton = React.createClass({
+    var MovieList = React.createClass({
         getInitialState: function() {
             return {
-                liked: false
+                list: ['007：幽灵党','饥饿游戏3','我的少女时代']
             };
         },
-        handleClick: function(event) {
-            this.setState({
-                liked: !this.state.liked
-            });
+        componentDidMount: function() {
+            setTimeout(function () {
+                this.setState({
+                    list: this.state.list.concat(['老炮儿','一切都好'])
+                });
+            }.bind(this), 2000);
         },
         render: function() {
-            var text = this.state.liked ? 'like' : 'haven\'t liked';
             return (
-                <p onClick={this.handleClick}>
-                    You {text} this. Click to toggle.
-                </p>
-            );
+                <div>
+                {
+                    this.state.list.map(function (item, i) {
+                        return <div key={i}>{item}</div>
+                    })
+                }
+                </div>
+            )
         }
     });
-
     ReactDOM.render(
-        <LikeButton />,
+        <MovieList></MovieList>,
         document.getElementById('app')
     );
 
-上面代码是一个 LikeButton 组件，它的 getInitialState 方法用于定义初始状态，也就是一个对象，这个对象可以通过 this.state 属性读取。当用户点击组件，导致状态变化，this.setState 方法就修改状态值，每次修改以后，自动调用 this.render 方法，再次渲染组件。
-·
+上面代码是一个 MovieList 组件，它的 getInitialState 方法用于定义初始状态，也就是一个对象，这个对象可以通过 this.state 属性读取。在 componentDidMount 中修改组件的状态，this.setState 方法就修改状态值，每次修改以后，自动调用 this.render 方法，再次渲染组件。
+
 由于 this.props 和 this.state 都用于描述组件的特性，可能会产生混淆。一个简单的区分方法是，this.props 表示那些一旦定义，就不再改变的特性，而 this.state 是会随着用户互动而产生变化的特性。
 
 ### 组件的详细说明和生命周期
