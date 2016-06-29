@@ -1,9 +1,8 @@
 {
-  "name": "pepper",
+  "name": "p",
   "version": "0.0.1",
-  "description": "wepiao front end solution",
+  "description": "front end solution",
   "main": "app.js",
-  "author": "FEI@wepiao.com",
   "license": "ISC",
   "dependencies": {
     "classnames": "^1.2.0",
